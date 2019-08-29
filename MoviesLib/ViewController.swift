@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ivPoster.image = UIImage(named: movie.image)
+        ivPoster.image = movie.poster as! UIImage
         lbTitle.text = movie.title
         lbCategories.text = movie.categories
         lbDuration.text = movie.duration
