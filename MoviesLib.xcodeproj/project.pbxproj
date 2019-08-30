@@ -15,6 +15,7 @@
 		ACA911CC23188C240024E7AC /* MoviesLib.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACA911CA23188C240024E7AC /* MoviesLib.xcdatamodeld */; };
 		ACA911CE23188D320024E7AC /* UIViewController+Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA911CD23188D320024E7AC /* UIViewController+Context.swift */; };
 		ACA911D0231891FB0024E7AC /* Movie+image.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA911CF231891FB0024E7AC /* Movie+image.swift */; };
+		ACA911D22318A4EE0024E7AC /* MovieRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA911D12318A4EE0024E7AC /* MovieRegisterViewController.swift */; };
 		ACC9B791230CABFA0059D643 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = ACC9B790230CABFA0059D643 /* movies.json */; };
 		ACC9B793230CAD030059D643 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9B792230CAD030059D643 /* Movie.swift */; };
 		ACC9B795230CBADD0059D643 /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9B794230CBADD0059D643 /* MoviesTableViewController.swift */; };
@@ -32,6 +33,7 @@
 		ACA911CB23188C240024E7AC /* MoviesLib.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviesLib.xcdatamodel; sourceTree = "<group>"; };
 		ACA911CD23188D320024E7AC /* UIViewController+Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Context.swift"; sourceTree = "<group>"; };
 		ACA911CF231891FB0024E7AC /* Movie+image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+image.swift"; sourceTree = "<group>"; };
+		ACA911D12318A4EE0024E7AC /* MovieRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRegisterViewController.swift; sourceTree = "<group>"; };
 		ACC9B790230CABFA0059D643 /* movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		ACC9B792230CAD030059D643 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		ACC9B794230CBADD0059D643 /* MoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				AC6BB3252306161A000E3ECE /* ViewController.swift */,
 				ACA911CD23188D320024E7AC /* UIViewController+Context.swift */,
 				AC6BB3272306161A000E3ECE /* Main.storyboard */,
+				ACA911D12318A4EE0024E7AC /* MovieRegisterViewController.swift */,
 				ACC9B796230CCC520059D643 /* MovieTableViewCell.swift */,
 				ACC9B794230CBADD0059D643 /* MoviesTableViewController.swift */,
 				AC6BB32A2306161B000E3ECE /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 				ACA911D0231891FB0024E7AC /* Movie+image.swift in Sources */,
 				ACA911CC23188C240024E7AC /* MoviesLib.xcdatamodeld in Sources */,
 				ACA911CE23188D320024E7AC /* UIViewController+Context.swift in Sources */,
+				ACA911D22318A4EE0024E7AC /* MovieRegisterViewController.swift in Sources */,
 				AC6BB3262306161A000E3ECE /* ViewController.swift in Sources */,
 				AC6BB3242306161A000E3ECE /* AppDelegate.swift in Sources */,
 				ACC9B793230CAD030059D643 /* Movie.swift in Sources */,

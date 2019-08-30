@@ -19,15 +19,21 @@ class ViewController: UIViewController {
     
     var movie: Movie!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        ivPoster.image = movie.poster as! UIImage
+        ivPoster.image = movie.image
         lbTitle.text = movie.title
         lbCategories.text = movie.categories
         lbDuration.text = movie.duration
         lbRating.text = "⭐️ \(movie.rating)/10"
         tvSummary.text = movie.summary
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? MovieRegisterViewController {
+            vc.movie = movie
+        }
     }
     
     
