@@ -48,7 +48,46 @@ class MovieRegisterViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    func selectPicture(sourceType: UIImagePickerController.SourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func chooseImageType(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Selecionar poster", message: "De onde você deseja escolher o poster?", preferredStyle: .actionSheet)
         
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        let libraryAction = UIAlertAction(title: "Biblioteca de fotos", style: .default) { (_) in
+            self.selectPicture(sourceType: .photoLibrary)
+        }
+        
+        let photosAction = UIAlertAction(title: "Álbum de fotos", style: .default) { (_) in
+            self.selectPicture(sourceType: .savedPhotosAlbum)
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Câmera", style: .default) { (_) in
+                self.selectPicture(sourceType: .camera)
+            }
+            alert.addAction(cameraAction)
+        }
+        
+        alert.addAction(libraryAction)
+        alert.addAction(photosAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension MovieRegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            ivPoster.image = image
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
