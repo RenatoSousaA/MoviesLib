@@ -85,9 +85,23 @@ class MovieRegisterViewController: UIViewController {
 
 extension MovieRegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         if let image = info[.originalImage] as? UIImage {
-            ivPoster.image = image
+            let aspectRatio = image.size.width / image.size.height
+            let maxSize: CGFloat = 500
+            var smallSize: CGSize
+            if aspectRatio > 1 {
+                smallSize = CGSize(width: maxSize, height: maxSize/aspectRatio)
+            } else {
+                smallSize = CGSize(width: maxSize*aspectRatio, height: maxSize)
+            }
+            
+            UIGraphicsBeginImageContext(smallSize)
+            image.draw(in: CGRect(x: 0, y: 0, width: smallSize.width, height: smallSize.height))
+            ivPoster.image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
         }
+        
         dismiss(animated: true, completion: nil)
     }
 }
