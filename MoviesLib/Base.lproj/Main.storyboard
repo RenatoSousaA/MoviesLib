@@ -90,11 +90,17 @@
                             <outlet property="delegate" destination="nxG-R4-cg4" id="kkA-3Y-6Px"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Filmes" id="eEk-wU-5DW"/>
+                    <navigationItem key="navigationItem" title="Filmes" id="eEk-wU-5DW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6ei-Zi-yqx">
+                            <connections>
+                                <segue destination="Ft3-nc-LHa" kind="show" id="eUY-7B-6lS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIO-Ie-FTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204" y="116.74876847290641"/>
+            <point key="canvasLocation" x="199" y="260"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -246,6 +252,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="SxG-Vz-fi2">
+                        <barButtonItem key="rightBarButtonItem" title="Editar" id="Ye1-VC-wup">
+                            <connections>
+                                <segue destination="Ft3-nc-LHa" kind="show" id="VVl-lb-uCl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ivPoster" destination="LT8-OZ-V0L" id="ozG-q2-UC5"/>
                         <outlet property="lbCategories" destination="Kvp-Fy-dRY" id="PWs-jB-hEa"/>
@@ -257,7 +270,98 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="117"/>
+            <point key="canvasLocation" x="991" y="599"/>
+        </scene>
+        <!--Movie Register View Controller-->
+        <scene sceneID="1Sb-6G-baS">
+            <objects>
+                <viewController id="Ft3-nc-LHa" customClass="MovieRegisterViewController" customModule="MoviesLib" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jQo-QD-Puv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDG-ZX-Eb0">
+                                <rect key="frame" x="37" y="122" width="300" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nota" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TwE-rT-vr2">
+                                <rect key="frame" x="37" y="160" width="140" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duração" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jYr-XS-stu">
+                                <rect key="frame" x="197" y="160" width="140" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categorias" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GAD-Ix-b5x">
+                                <rect key="frame" x="37" y="198" width="300" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aec-Cm-z5H">
+                                <rect key="frame" x="37" y="229" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Selecionar Imagem"/>
+                                <connections>
+                                    <action selector="chooseImageType:" destination="Ft3-nc-LHa" eventType="touchUpInside" id="an0-wY-Bha"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wX-G3-sjl">
+                                <rect key="frame" x="37" y="260" width="300" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sinopse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StF-AD-ijE">
+                                <rect key="frame" x="37" y="434" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GiJ-yu-DQr">
+                                <rect key="frame" x="37" y="461" width="300" height="244"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vaj-0b-iKw">
+                                <rect key="frame" x="37" y="716" width="300" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.13937023853609243" green="0.17624344244653412" blue="1" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Cadastrar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addEditMovie:" destination="Ft3-nc-LHa" eventType="touchUpInside" id="j7m-LL-KYW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="sZw-fM-c01"/>
+                    </view>
+                    <connections>
+                        <outlet property="btAddEdit" destination="Vaj-0b-iKw" id="y9K-7U-Pq2"/>
+                        <outlet property="ivPoster" destination="2wX-G3-sjl" id="ZCo-tt-g6a"/>
+                        <outlet property="tfCategories" destination="GAD-Ix-b5x" id="DI0-kA-OK6"/>
+                        <outlet property="tfDuration" destination="jYr-XS-stu" id="YEm-qX-XLW"/>
+                        <outlet property="tfRating" destination="TwE-rT-vr2" id="Bmj-EO-qur"/>
+                        <outlet property="tfTitle" destination="YDG-ZX-Eb0" id="mZ6-IZ-Ta4"/>
+                        <outlet property="tvSummary" destination="GiJ-yu-DQr" id="xh1-ln-XzH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ako-u5-ylB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1777" y="259"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Wv-96-khm">
@@ -283,4 +387,7 @@
         <image name="play" width="53" height="53"/>
         <image name="toystory3" width="400" height="330"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="VVl-lb-uCl"/>
+    </inferredMetricsTieBreakers>
 </document>

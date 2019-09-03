@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class MoviesTableViewController: UITableViewController {
     
-    var movies: [Movie] = []
+    // var movies: [Movie] = []
+    var fetchedResultsController: NSFetchedResultsController<Movie>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,25 +23,38 @@ class MoviesTableViewController: UITableViewController {
         guard let vc = segue.destination as? ViewController else {
             return
         }
-        vc.movie = movies[tableView.indexPathForSelectedRow!.row]
+        vc.movie = fetchedResultsController.object(at: tableView.indexPathForSelectedRow!)
     }
     
     private func loadMovies() {
-        guard let jsonURL = Bundle.main.url(forResource: "movies", withExtension: "json") else {
-            return
-        }
         
-        do {
-            
-            let data = try Data(contentsOf: jsonURL)
-            
-            let jsonDecoder = JSONDecoder()
-            movies = try jsonDecoder.decode([Movie].self, from: data)
-            tableView.reloadData() // carrega novamente a tabela
-            
-        } catch {
-            print(error)
-        }
+        let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
+        let sortDescriptorRating = NSSortDescriptor(key: "rating", ascending: false)
+        let sortDescriptorTitle = NSSortDescriptor(key: "rating", ascending: false)
+        
+        fetchRequest.sortDescriptors = [sortDescriptorRating, sortDescriptorTitle]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchedResultsController.delegate = self
+        
+        try? fetchedResultsController.performFetch()
+        
+//        guard let jsonURL = Bundle.main.url(forResource: "movies", withExtension: "json") else {
+//            return
+//        }
+//
+//        do {
+//
+//            let data = try Data(contentsOf: jsonURL)
+//
+//            let jsonDecoder = JSONDecoder()
+//            movies = try jsonDecoder.decode([Movie].self, from: data)
+//            tableView.reloadData() // carrega novamente a tabela
+//
+//        } catch {
+//            print(error)
+//        }
     }
     
 
@@ -52,13 +67,13 @@ class MoviesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return movies.count
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieTableViewCell
 
-        let movie = movies[indexPath.row]
+        let movie = fetchedResultsController.object(at: indexPath)
         cell.prepare(with: movie)
 
         return cell
@@ -72,17 +87,23 @@ class MoviesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
+            let movie = fetchedResultsController.object(at: indexPath)
+            context.delete(movie)
+            try? context.save()
+            
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
+            // tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        // else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        // }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -109,4 +130,10 @@ class MoviesTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension MoviesTableViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        tableView.reloadData()
+    }
 }
